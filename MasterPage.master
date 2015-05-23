@@ -1,0 +1,96 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    <asp:ImageButton ID="ImageButton2" runat="server" 
+                        DescriptionUrl="~/Default.aspx" Height="20px" ImageUrl="~/images/logo.jpg" 
+                        PostBackUrl="~/Default.aspx" Width="20px" />
+                    医院医务管理系统
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                                <asp:Label ID="Label3" runat="server" Font-Bold="True" Font-Names="隶书" 
+                                    ForeColor="White"></asp:Label>
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">登录</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        欢迎您，<span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>
+                        ! [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="注销" LogoutPageUrl="~/"/> 
+                        ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
+                    EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" 
+                    Height="50px" Width="423px" Font-Bold="True" Font-Names="宋体" 
+                    Font-Overline="False" Font-Size="Small" ForeColor="White" 
+                    StaticEnableDefaultPopOutImage="False" StaticSubMenuIndent="30px" 
+                    BorderStyle="None" DynamicVerticalOffset="3" ItemWrap="True">
+                    <StaticMenuStyle BorderColor="White" HorizontalPadding="3px" 
+                        VerticalPadding="3px" />
+                    <StaticSelectedStyle ForeColor="White" />
+                    <StaticMenuItemStyle Height="30px" BorderColor="White" BorderStyle="None" 
+                        ForeColor="White" BorderWidth="1px" />
+                    <DynamicHoverStyle BackColor="#4B6C9E" Font-Bold="False" ForeColor="White" 
+                        Width="70px" />
+                    <DynamicSelectedStyle BackColor="White" ForeColor="White" />
+                    <DynamicMenuItemStyle BackColor="#3A4F63" ForeColor="White" 
+                        Width="70px" Height="30px" />
+                    <StaticHoverStyle BackColor="#4B6C9E" ForeColor="White" />
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="系统主页" Value="系统主页" >
+                            <asp:MenuItem NavigateUrl="~/chaxun.aspx" Text="查询" Value="查询"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/newz.aspx" Text="添加" Value="添加"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="药品管理" Value="药品管理" >
+                            <asp:MenuItem Text="全部药品" Value="全部药品" NavigateUrl="~/ypqd.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="新增药品" Value="新增药品" NavigateUrl="~/newz.aspx"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="处方笺" Value="处方笺">
+                            <asp:MenuItem Text="普通处方" Value="写处方笺" NavigateUrl="~/putcf.aspx"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/cfj.aspx" Text="中药处方" Value="中药处方"></asp:MenuItem>
+                            <asp:MenuItem Text="历史处方" Value="历史处方"></asp:MenuItem>
+                            <asp:MenuItem Text="草稿箱" Value="草稿箱"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="结算中心" Value="结算中心">
+                            <asp:MenuItem Text="填表" Value="填表" NavigateUrl="~/zfjs.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="历史结算" Value="历史结算"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="新农合" Value="新农合">
+                            <asp:MenuItem NavigateUrl="~/people.aspx" Text="参免患者" Value="参免患者">
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/newz.aspx" Text="新增名单" Value="新增名单"></asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+        @版权所有[微纳]</div>
+    </form>
+</body>
+</html>
